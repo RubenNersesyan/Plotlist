@@ -16,20 +16,46 @@ header.append(menu)
 document.body.append(header)
 
 document.addEventListener('scroll', () => {
-    var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var width = window.innerWidth;
+    var scroll = document.body.scrollTop || document.documentElement.scrollTop || window.scrollY;
+    var links = document.querySelectorAll('#menu_ul>li>a');
+    console.log(links);
+    var lines = document.querySelectorAll('button>span');
     if (scroll > 100) {
         header.style.backgroundColor = 'white';
-      var links = document.querySelectorAll('ul>li>a');
-      log_img.src = 'https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/black-logo.png'
-      links.forEach((e)=>{
-        e.style.color = 'black'
-      })
+        log_img.src = 'https://templatemo.com/templates/templatemo_564_plot_listing/assets/images/black-logo.png';
+        if (width > 768) {
+            links.forEach((e) => {
+                e.style.color = 'black'
+            })
+        } else {
+            links.forEach((e) => {
+                e.style.color = 'black'
+            })
+        }
+        lines.forEach((e) => {
+            e.style.backgroundColor = 'black'
+        })
+    } else if (width < 768) {
+        links.forEach((e) => {
+            e.style.color = 'black'
+        })
     } else {
-        header.style.backgroundColor = ''; 
+        header.style.backgroundColor = '';
         log_img.src = './logoimg/white-logo.png';
-        var links = document.querySelectorAll('ul>li>a');
-        links.forEach((e)=>{
-          e.style.color = 'white'
+
+        if (scroll > 100) {
+            links.forEach((e) => {
+                e.style.color = 'black'
+            })
+        } else {
+            links.forEach((e) => {
+                e.style.color = 'white'
+            })
+        }
+        links[4].style.color = 'black'
+        lines.forEach((e) => {
+            e.style.backgroundColor = 'white'
         })
     }
 });
